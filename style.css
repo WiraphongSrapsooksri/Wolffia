@@ -1,12 +1,12 @@
-/* Base styles */
+/* Modern Color Scheme & Base Styles */
 :root {
-    --primary: #1a1a1a;
-    --secondary: #333;
-    --accent: #4a4a4a;
-    --background: #ffffff;
-    --text: #1a1a1a;
-    --spacing: 120px;
-    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --primary: #00C896;      /* Vibrant Mint */
+    --secondary: #6C63FF;    /* Electric Purple */
+    --accent: #FF6B6B;       /* Coral Pink */
+    --dark: #2D3436;         /* Deep Gray */
+    --light: #ffffff;
+    --gradient: linear-gradient(135deg, #00C896, #6C63FF);
+    --card-shadow: 0 10px 30px rgba(108, 99, 255, 0.1);
 }
 
 * {
@@ -16,10 +16,9 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.5;
-    color: var(--text);
-    background: var(--background);
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark);
+    background: #fafafa;
 }
 
 .container {
@@ -28,19 +27,15 @@ body {
     padding: 0 24px;
 }
 
-/* Navigation with hover effect */
+/* Sleek Navigation */
 .nav {
-    padding: 24px 0;
+    padding: 20px 0;
     position: fixed;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     z-index: 1000;
-    transition: transform 0.3s ease;
-}
-
-.nav.hide {
-    transform: translateY(-100%);
 }
 
 .nav .container {
@@ -50,335 +45,307 @@ body {
 }
 
 .logo {
-    font-size: 1.2rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-decoration: none;
-    color: var(--primary);
-    position: relative;
-    overflow: hidden;
 }
 
-.logo::after {
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    position: relative;
+    padding: 8px 0;
+}
+
+.nav-links a::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: var(--primary);
+    background: var(--gradient);
     transform: scaleX(0);
-    transform-origin: right;
     transition: transform 0.3s ease;
-}
-
-.logo:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-.nav-links {
-    display: flex;
-    gap: 32px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--secondary);
-    font-size: 0.9rem;
-    transition: var(--transition);
-    position: relative;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--primary);
-    transform: scaleX(0);
-    transition: var(--transition);
-}
-
-.nav-links a:hover {
-    color: var(--primary);
 }
 
 .nav-links a:hover::after {
     transform: scaleX(1);
 }
 
-/* Hero with parallax effect */
+/* Dynamic Hero Section */
 .hero {
-    padding: var(--spacing) 0;
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    padding: 160px 0 100px;
+    background: var(--gradient);
+    color: var(--light);
     position: relative;
     overflow: hidden;
 }
 
-.hero-image {
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 48px;
-    transform: translateY(0);
-    transition: var(--transition);
-    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.1));
-}
-
-.hero-image:hover {
-    transform: translateY(-10px);
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    font-weight: 500;
-    margin-bottom: 16px;
-    letter-spacing: -1px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.8s forwards;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    color: var(--secondary);
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.8s 0.2s forwards;
-}
-
-/* Animated Benefits Cards */
-.benefits {
-    padding: var(--spacing) 0;
-    background: #f8f8f8;
-}
-
-.benefits .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 48px;
-}
-
-.benefit {
-    position: relative;
-    padding: 32px;
-    background: white;
-    border-radius: 12px;
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-.benefit:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-}
-
-.benefit span {
-    font-size: 0.9rem;
-    color: var(--accent);
-    margin-bottom: 16px;
-    display: block;
-    position: relative;
-    padding-left: 24px;
-}
-
-.benefit span::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 16px;
-    height: 1px;
-    background: var(--accent);
-    transition: var(--transition);
-}
-
-.benefit:hover span::before {
-    width: 24px;
-}
-
-.benefit h3 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 16px;
-}
-
-.benefit p {
-    color: var(--secondary);
-}
-
-/* Animated Nutrition Cards */
-.nutrition {
-    padding: var(--spacing) 0;
-}
-
-.nutrition h2 {
-    font-size: 2rem;
-    font-weight: 500;
-    margin-bottom: 48px;
-    text-align: center;
-}
-
-.nutrition-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 32px;
-}
-
-.nutrition-item {
-    text-align: center;
-    padding: 32px;
-    border-radius: 12px;
-    background: white;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-}
-
-.nutrition-item::before {
+.hero::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 4px;
-    background: #f0f0f0;
-    transition: var(--transition);
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%23FFFFFF" fill-opacity="0.05" d="M41.5,-64.5C53.5,-57.5,62.7,-45.6,69.7,-32.1C76.7,-18.6,81.4,-3.5,78.9,10.4C76.4,24.3,66.6,37,55.8,47.8C45,58.6,33.1,67.5,19.2,71.6C5.3,75.7,-10.7,75,-24.8,69.8C-38.9,64.6,-51.1,54.9,-60.9,42.8C-70.7,30.7,-78.1,16.1,-79.1,0.6C-80.1,-14.9,-74.8,-31.1,-64.8,-42.8C-54.8,-54.5,-40.1,-61.7,-26.3,-67.5C-12.4,-73.3,0.6,-77.7,13.3,-76.1C26,-74.5,38.4,-66.9,41.5,-64.5Z" transform="translate(100 100)" /></svg>') no-repeat center center;
+    animation: rotate 30s linear infinite;
 }
 
-.nutrition-item:hover::before {
-    background: var(--primary);
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.hero-container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 40px;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+    transition: transform 0.5s ease;
+}
+
+.hero-image:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Animated Benefit Cards */
+.benefits {
+    padding: 100px 0;
+    background: var(--light);
+}
+
+.benefits .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.benefit {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.benefit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.benefit:hover {
+    transform: translateY(-10px);
+}
+
+.benefit:hover::before {
+    transform: scaleX(1);
+}
+
+.benefit span {
+    font-size: 4rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.benefit h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+/* Modern Nutrition Section */
+.nutrition {
+    padding: 100px 0;
+    background: #f8f9fa;
+}
+
+.nutrition h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nutrition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.nutrition-item {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+    transition: all 0.3s ease;
 }
 
 .nutrition-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px) scale(1.03);
 }
 
 .nutrition-item span {
-    font-size: 0.9rem;
-    color: var(--accent);
+    font-size: 1.1rem;
+    color: var(--dark);
+    font-weight: 500;
+    margin-bottom: 10px;
     display: block;
-    margin-bottom: 8px;
 }
 
 .nutrition-item p {
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
 }
 
-/* Modern Footer */
+/* Stylish Footer */
 footer {
-    padding: var(--spacing) 0;
-    background: #f8f8f8;
+    background: var(--dark);
+    color: var(--light);
+    padding: 80px 0 40px;
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 48px;
-    margin-bottom: 48px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
 }
 
 footer h3 {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 16px;
-    position: relative;
-    display: inline-block;
-}
-
-footer h3::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 40px;
-    height: 2px;
-    background: var(--primary);
-}
-
-footer p {
-    color: var(--secondary);
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
 }
 
 .social-links {
     display: flex;
-    gap: 16px;
+    gap: 20px;
 }
 
 .social-links a {
-    color: var(--secondary);
+    color: var(--light);
     text-decoration: none;
-    font-size: 0.9rem;
-    transition: var(--transition);
-    position: relative;
-    padding: 8px 0;
+    transition: color 0.3s ease;
 }
 
 .social-links a:hover {
     color: var(--primary);
 }
 
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-input {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--light);
+    flex: 1;
+}
+
+.footer-button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary);
+    color: var(--light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.footer-button:hover {
+    background: var(--secondary);
+}
+
 .copyright {
     text-align: center;
-    color: var(--accent);
-    font-size: 0.9rem;
-    position: relative;
-    padding-top: 24px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
 }
 
-.copyright::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 1px;
-    background: var(--accent);
-}
-
-/* Animations */
-@keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Smooth Scroll */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
-    :root {
-        --spacing: 80px;
-    }
-
-    .nav {
-        padding: 16px 0;
-    }
-
     .nav-links {
         display: none;
     }
 
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
-    .hero p {
-        font-size: 1rem;
-    }
-    
     .benefit, .nutrition-item {
         transform: none !important;
     }
+}
+
+/* Cool Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient);
+    border-radius: 5px;
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
 }
