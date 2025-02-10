@@ -461,3 +461,23 @@ footer {
     background: var(--primary);
     border-radius: 5px;
 }
+
+
+.lang-toggle {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 2px solid currentColor;
+    border-radius: 4px;
+    color: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lang-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.lang-toggle:active {
+    transform: scale(0.95);
+}
